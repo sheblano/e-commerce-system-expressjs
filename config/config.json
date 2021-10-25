@@ -1,0 +1,17 @@
+{
+    "JWT_KEY": "thispasscodeissecret",
+    "API_PREFIX_URL": "/api/v1",
+    "END_POINTS": {
+        "AUTH": {
+            "ROUTE_BASE_URL": "/auth"
+        }
+    },
+    "LOCAL": {
+        "SERVER_PORT": "3003",
+        "MONGO_ATLAS_PW": "admin123"
+    },
+    "STAGING": {
+        "SERVER_PORT": "3003",
+        "MONGO_ATLAS_PW": "admin123"
+    }
+}
