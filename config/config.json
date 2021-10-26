@@ -8,10 +8,18 @@
     },
     "LOCAL": {
         "SERVER_PORT": "3003",
-        "MONGO_ATLAS_PW": "admin123"
+        "DB_HOST": "localhost",
+        "DB_USER": "admin",
+        "DB_PASSWORD": "admin",
+        "DB_SCHEMA": "ecommdb",
+        "dialect": "mysql"
     },
     "STAGING": {
         "SERVER_PORT": "3003",
-        "MONGO_ATLAS_PW": "admin123"
+        "DB_HOST": "localhost",
+        "DB_USER": "root",
+        "DB_PASSWORD": "root123456",
+        "DB_SCHEMA": "ecommdb",
+        "dialect": "mysql"
     }
 }

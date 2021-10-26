@@ -1,7 +1,8 @@
+const dbConfig = require("../config/db.config.js");
+const Sequelize = require("sequelize");
+
 module.exports = {
     initializeDB: async () => {
-        mongoose.connect(mongoUrl, { useNewUrlParser: true });
-        mongoose.Promise = global.Promise;
     },
 
     cors: async (req, res, next) => {
