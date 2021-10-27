@@ -1,24 +1,31 @@
 const Sequelize = require("sequelize");
+const dbConfig = require('../config/db.config');
+const appEnvironment = require("../environment");
 
-module.exports = (dbConfig) => {
-    const schema = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD,
+module.exports = () => {
+    const config = dbConfig(appEnvironment.environment);
+    const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD,
         {
-            host: dbConfig.HOST,
-            dialect: dbConfig.dialect,
+            host: config.HOST,
+            dialect: config.dialect,
             operatorsAliases: false,
             pool: {
-                max: dbConfig.pool.max,
-                min: dbConfig.pool.min,
-                acquire: dbConfig.pool.acquire,
-                idle: dbConfig.pool.idle
+                max: config.pool.max,
+                min: config.pool.min,
+                acquire: config.pool.acquire,
+                idle: config.pool.idle
             }
         });
 
+    const models = {
+        User: require("./user.model.js")(sequelize)
+    };
     const db = {
-        Sequelize: Sequelize,
-        schema: schema
+        // Sequelize: Sequelize,
+        sequelize: sequelize,
+        models: models
     };
 
-    db.user = require("./user.model.js")(schema, Sequelize);
+
     return db;
 }

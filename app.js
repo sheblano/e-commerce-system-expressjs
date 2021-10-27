@@ -1,15 +1,15 @@
 const express = require('express');
 const CONSTANTS = require('./config/config.json');
 const config = require('./config/init');
-const dbConfig = require('./config/db.config');
+// const dbConfig = require('./config/db.config');
 const db = require("./models");
+const appEnvironment = require("./environment");
 
 // routes
 const authRoute = require('./routes/auth');
 
 // Application Environment
-let environment = 'LOCAL';
-let port = process.env.PORT || CONSTANTS[environment].SERVER_PORT;
+let port = process.env.PORT || CONSTANTS[appEnvironment.environment].SERVER_PORT;
 
 // initialize express app
 const app = express();
@@ -20,11 +20,13 @@ app.use(express.urlencoded({ extended: true }));
 // parse requests of content-type - application/json
 app.use(express.json());
 
+
 // middlware for cors origin
 app.use(config.cors);
 
 // init DB
-db(dbConfig(environment)).schema.sync({ alter: true }).then(() => {
+const database = db();
+database.sequelize.sync({ alter: true }).then(async (res) => {
     console.log("DB IS UP and Synced.");
 });
 

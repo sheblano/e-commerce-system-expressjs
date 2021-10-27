@@ -13,6 +13,7 @@
     "bcrypt": "^3.0.8",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "express-validator": "^6.13.0",
     "jsonwebtoken": "^8.4.0",
     "mysql2": "^2.3.2",
     "sequelize": "^6.8.0",

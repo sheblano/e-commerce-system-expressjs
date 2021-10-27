@@ -1,7 +1,7 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Sequelize } = require("sequelize");
 
-module.exports = (schema, Sequelize) => {
-    const User = schema.define("user", {
+module.exports = (sequelize) => {
+    const User = sequelize.define("user", {
         username: {
             type: DataTypes.STRING
         },
@@ -11,17 +11,14 @@ module.exports = (schema, Sequelize) => {
         allowed_limit: {
             type: DataTypes.INTEGER
         },
-        published: {
-            type: DataTypes.BOOLEAN
-        },
         createdAt: {
-            type: Sequelize.DATE(3),
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)'),
+            type: DataTypes.DATE(3),
+            // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)'),
         },
         updatedAt: {
-            type: Sequelize.DATE(3),
-            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
-        },
+            type: DataTypes.DATE(3),
+            // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+        }
     });
     return User;
 };
