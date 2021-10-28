@@ -15,13 +15,13 @@
 - **Node App deployed on Heroku and DB on AWS personal RDS instance**
 
 ## flow
-- use **register-test** api for creating sample user for testing.
+- use **register/test** api for creating sample user for testing.
 	the api will create and return a username
 	this username is auto generated with word "test" then "-" then random number.
 
 	this random number is the password you can use to test
 	**ex**: test-1635381942 then **username** is test-1635381942 and **password** is 1635381942
-	 api public end-point (POST): https://dry-atoll-52485.herokuapp.com/api/v1/auth/register-test
+	 api public end-point (POST): https://dry-atoll-52485.herokuapp.com/api/v1/auth/register/test
 
 - then you can **login** using your username and password using login api
 api public end-point (POST): https://dry-atoll-52485.herokuapp.com/api/v1/auth/login
