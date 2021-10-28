@@ -4,17 +4,6 @@ const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
 
 const Utlis = {
-    hashPassword: function (inputPassword, salt, callback) {
-        bcrypt.hash(inputPassword.toString(), salt, (err, hashedPw) => {
-            if (err) {
-                console.log(err);
-                callback(false);
-            } else {
-                callback(hashedPw);
-            }
-        });
-    },
-
     hashPassword: function (inputPassword, salt) {
         return new Promise((resolve, reject) => {
             bcrypt.hash(inputPassword.toString(), salt, (err, hashedPw) => {

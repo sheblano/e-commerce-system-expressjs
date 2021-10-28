@@ -1,10 +1,4 @@
-const dbConfig = require("../config/db.config.js");
-const Sequelize = require("sequelize");
-
 module.exports = {
-    initializeDB: async () => {
-    },
-
     cors: async (req, res, next) => {
         res.header("Access-Control-Allow-Origin", "*");
         res.header(

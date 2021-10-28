@@ -16,7 +16,7 @@ router.get('/', checkAuth, async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({
-            errorMsg: err
+            errorMsg: 'General server failure'
         });
     }
 
@@ -44,13 +44,17 @@ router.post('/:productId/request', checkAuth, async (req, res) => {
                     res.status(201).json(productRequest);
                 } else {
                     await transaction.rollback();
+                    console.log("error update user Limit");
+                    res.status(500).json({
+                        errorMsg: "error update user Limit"
+                    });
                 }
 
             } else {
                 await transaction.rollback();
                 console.log("error product Request is null");
                 res.status(500).json({
-                    errorMsg: err
+                    errorMsg: 'General server failure'
                 });
             }
         } else {
@@ -64,7 +68,7 @@ router.post('/:productId/request', checkAuth, async (req, res) => {
         console.log(err);
         await transaction.rollback();
         res.status(500).json({
-            errorMsg: err
+            errorMsg: 'General server failure'
         });
     }
 });
@@ -78,19 +82,26 @@ router.patch('/:productId/request/:requestId/cancel', checkAuth, async (req, res
     try {
         // start a transaction process    
         const productRequest = await productController.getProductRequest(req.params.requestId);
-        const product = productRequest.getProduct();
+        const product = await productRequest.getProduct();
         const allowedLimit = await productController.getUserCurrentAllowedLimit(req.userData.user.id);
-        
+
         if (productRequest.status === ProductRequestStatus.CREATED) {
             const canceledRequest = await productController.cancelProductRequest(req.userData.user.id, req.params.requestId, transaction);
 
             if (canceledRequest) {
                 // refund the request price to user allowed amount
+                console.log(allowedLimit, product);
+                console.log(allowedLimit, product.price);
                 const newAmount = allowedLimit + product.price;
-                const updateLimit = await productController.updateUserAllowedLimit(newAmount, req.userData.user.id, transaction);
+                console.log(newAmount);
+                
+                const updateUser = await productController.updateUserAllowedLimit(newAmount, req.userData.user.id, transaction);
+                console.log(updateUser);
 
                 await transaction.commit();
-                res.status(200).json();
+                res.status(200).json({
+                    message: "request has been canceled"
+                });
             } else {
                 await transaction.rollback();
                 res.status(500).json({
@@ -107,7 +118,7 @@ router.patch('/:productId/request/:requestId/cancel', checkAuth, async (req, res
         console.log(err);
         await transaction.rollback();
         res.status(500).json({
-            errorMsg: err
+            errorMsg: 'General server failure'
         });
     }
 });

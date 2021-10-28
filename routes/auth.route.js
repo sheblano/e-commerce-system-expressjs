@@ -24,9 +24,10 @@ router.post('/login', authValidator.userLogin, async (req, res) => {
     try {
         Utlis.checkValidationRequestErrors(req, res);
         const user = await authController.getUser(req.body.username);
-
+        // if this is a valid username so get the user
         if (user) {
-            return authController.loginUser(req, res, user);
+            const result = await authController.loginUser(req.body.password, user);
+            res.status(result.status).json(result.body);
         } else {
             // if username does not exists in the DB
             console.log('error -1');
@@ -37,7 +38,7 @@ router.post('/login', authValidator.userLogin, async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({
-            errorMsg: err
+            errorMsg: 'General server failure'
         });
     }
 
@@ -47,7 +48,7 @@ router.post('/login', authValidator.userLogin, async (req, res) => {
  * Add random user to the database for testing purposes
  * API is NOT protected
 */
-router.post('/register-test', authValidator.userLogin, async (req, res) => {
+router.post('/register/test', authValidator.userLogin, async (req, res) => {
     try {
         let addedUser = await authController.createTestUser();
         addedUser = JSON.stringify(addedUser);
@@ -56,7 +57,7 @@ router.post('/register-test', authValidator.userLogin, async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({
-            errorMsg: err
+            errorMsg: 'General server failure'
         });
     }
 });

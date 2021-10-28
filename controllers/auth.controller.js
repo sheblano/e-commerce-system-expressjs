@@ -5,35 +5,30 @@ const bcrypt = require('bcrypt');
 module.exports = {
     /**
      * just for encabsulating login logic to make route looks cleaner
-     * @param {request} req 
-     * @param {response} res 
+     * @param {string} password 
      * @param {User} user 
-     * @returns JSON response and status
+     * @returns Promise<{status: string, body:JSON}>
      */
-    loginUser: async (req, res, user) => {
-        bcrypt.compare(req.body.password, user.password, (err, response) => {
-            if (err) {
-                console.log('error 1');
-                return res.status(401).json({
-                    errorMsg: 'authentication failure'
-                });
-            }
-
-            if (response) { // if password is correct
-                const token = Utlis.generateJWT({
-                    email: user.email,
-                    userId: user.id
-                })
-                return res.status(200).json({
-                    token: token
-                })
-            } else {
-                // if password is incorrect
-                console.log('error 2');
-                return res.status(401).json({
-                    errorMsg: 'authentication failure'
-                });
-            }
+    loginUser: async (password, user) => {
+        return new Promise(function (resolve, reject) {
+            // compare user typed password with the one in DB
+            bcrypt.compare(password, user.password, (err, response) => {
+                if (err) {
+                    console.log('error 1');
+                    reject({ status: 401, body: { errorMsg: 'authentication failure' } });
+                }
+                if (response) { // if password is correct then valid login happen
+                    const token = Utlis.generateJWT({
+                        email: user.email,
+                        userId: user.id
+                    });
+                    resolve({ status: 200, body: { token: token } });
+                } else {
+                    // if password is incorrect
+                    console.log('error 2');
+                    reject({ status: 401, body: { errorMsg: 'authentication failure' } });
+                }
+            });
         });
     },
     /**
