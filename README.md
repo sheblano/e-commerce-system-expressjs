@@ -36,17 +36,4 @@ api public end-point (POST): https://dry-atoll-52485.herokuapp.com/api/v1/auth/l
 	and canceling the request **if request is not deleivered or canceled before** will refund the user with the deducted amount upon request
 
 ## Postman Collection
-
-<div class="postman-run-button"
-data-postman-action="collection/fork"
-data-postman-var-1="264883-9dd183ac-57bf-4063-a64c-cb14cb4fc48b"
-data-postman-collection-url="entityId=264883-9dd183ac-57bf-4063-a64c-cb14cb4fc48b&entityType=collection&workspaceId=1cf49d09-22c4-45ac-8e99-393b0beea99d"></div>
-<script type="text/javascript">
-  (function (p,o,s,t,m,a,n) {
-    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
-    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
-      (n = o.createElement("script")),
-      (n.id = s+t), (n.async = 1), (n.src = m), n
-    ));
-  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
-</script>
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/264883-9dd183ac-57bf-4063-a64c-cb14cb4fc48b?action=collection%2Ffork&collection-url=entityId%3D264883-9dd183ac-57bf-4063-a64c-cb14cb4fc48b%26entityType%3Dcollection%26workspaceId%3D1cf49d09-22c4-45ac-8e99-393b0beea99d)
