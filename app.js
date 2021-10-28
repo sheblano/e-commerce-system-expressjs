@@ -39,6 +39,11 @@ const globalApiPrefix = CONSTANTS.API_PREFIX_URL;
 app.use(globalApiPrefix.concat(CONSTANTS.END_POINTS.AUTH.ROUTE_BASE_URL), authRoute);
 app.use(globalApiPrefix.concat(CONSTANTS.END_POINTS.PRODUCT.ROUTE_BASE_URL), productRoute);
 
+process.on('uncaughtException', function (err) {
+    console.log("uncaughtException...");
+    console.error(err.stack);
+});
+
 app.listen(port, () => {
     console.log('Server is up and running on port numner ' + port);
 });
