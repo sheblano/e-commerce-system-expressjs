@@ -1,32 +1,37 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config/config.json');
+const authController = require("../controllers/auth.controller");
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
     try {
         let receivedToken = req.headers.authorization;
-        console.log(receivedToken);
+        // console.log(receivedToken);
 
         let token = req.headers.authorization; //Bearer included
         if (token) {
             token = token.split(" ")[1]; // remove Bearer
         }
 
-        const verifiedDecodedToken = jwt.verify(token, config.JWT_KEY);
-        req.userExtractedData = verifiedDecodedToken; // to hold decoded user data into req.userExtractedData 
-        // console.log(req.userExtractedData);
-        const id = req.params.userId;
-        if (id !== req.userExtractedData.userId) {
-            console.log('valid token but invalid user');
+        const verifiedAndDecodedToken = jwt.verify(token, config.JWT_KEY);
+        console.log('verifiedAndDecodedToken ', verifiedAndDecodedToken);
+        req.userData = verifiedAndDecodedToken;
+        
+        // get user from the database
+        const userId = verifiedAndDecodedToken.userId;
+        const user = await authController.getUserById(userId);
+        if (user) {
+            console.log('attach user to the request');
+            req.userData.user = user;
+            next();
+        } else {
+            console.log('verified token but user not found in the DB');
             return res.status(401).json({
-                success: 0,
                 errorMsg: 'Invalid Token'
             });
         }
-        next();
     } catch (err) {
         console.log(err);
         return res.status(401).json({
-            success: 0,
             errorMsg: 'Invalid Token'
         });
     }

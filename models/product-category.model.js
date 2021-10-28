@@ -1,17 +1,9 @@
-const { DataTypes, Sequelize } = require("sequelize");
+const { DataTypes } = require("sequelize");
+const Product = require("./product.model");
 
 module.exports = (sequelize) => {
-    const User = sequelize.define("user", {
-        username: {
-            type: DataTypes.STRING
-        },
-        password: {
-            type: DataTypes.STRING
-        },
-        allowed_limit: {
-            type: DataTypes.INTEGER
-        },
-        salt: {
+    const ProductCategory = sequelize.define("product-category", {
+        name: {
             type: DataTypes.STRING
         },
         createdAt: {
@@ -24,7 +16,8 @@ module.exports = (sequelize) => {
             defaultValue: DataTypes.NOW,
             onUpdate: DataTypes.NOW,
             field: 'updated_at',
-        }
+        },
     });
-    return User;
+
+    return ProductCategory;
 };

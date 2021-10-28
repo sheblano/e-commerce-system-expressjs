@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Utlis = require('../helpers/utlis');
-const checkAuth = require('../middeware/auth');
 const authController = require('../controllers/auth.controller');
 const authValidator = require('../validators/auth.validator');
 
@@ -19,6 +18,7 @@ router.get('/', (req, res) => {
  * User loign 
  * @input user.username
  * @input user.password
+ * API is NOT protected
  */
 router.post('/login', authValidator.userLogin, async (req, res) => {
     try {
@@ -44,17 +44,15 @@ router.post('/login', authValidator.userLogin, async (req, res) => {
 });
 
 /**
-* Add random users to the database for testing the app
-* API is NOT protected
+ * Add random user to the database for testing purposes
+ * API is NOT protected
 */
 router.post('/register-test', authValidator.userLogin, async (req, res) => {
     try {
         let addedUser = await authController.createTestUser();
-        console.log('********************');
         addedUser = JSON.stringify(addedUser);
-        const { password, ...remain } = JSON.parse(addedUser);
+        const { password, createdAt, updatedAt, salt, ...remain } = JSON.parse(addedUser);
         res.status(201).json(remain);
-
     } catch (err) {
         console.log(err);
         res.status(500).json({

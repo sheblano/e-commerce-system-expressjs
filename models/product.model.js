@@ -1,18 +1,16 @@
 const { DataTypes, Sequelize } = require("sequelize");
+const ProductCategory = require("./product-category.model");
 
 module.exports = (sequelize) => {
-    const User = sequelize.define("user", {
-        username: {
+    const Product = sequelize.define("product", {
+        name: {
             type: DataTypes.STRING
         },
-        password: {
+        brand: {
             type: DataTypes.STRING
         },
-        allowed_limit: {
+        price: {
             type: DataTypes.INTEGER
-        },
-        salt: {
-            type: DataTypes.STRING
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -26,5 +24,6 @@ module.exports = (sequelize) => {
             field: 'updated_at',
         }
     });
-    return User;
+
+    return Product;
 };

@@ -4,8 +4,7 @@ const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
 
 const Utlis = {
-    hashPassword: function (inputPassword, callback) {
-        const salt = 10;
+    hashPassword: function (inputPassword, salt, callback) {
         bcrypt.hash(inputPassword.toString(), salt, (err, hashedPw) => {
             if (err) {
                 console.log(err);
@@ -15,9 +14,9 @@ const Utlis = {
             }
         });
     },
-    hashPassword: function (inputPassword) {
+
+    hashPassword: function (inputPassword, salt) {
         return new Promise((resolve, reject) => {
-            const salt = 10;
             bcrypt.hash(inputPassword.toString(), salt, (err, hashedPw) => {
                 if (err) {
                     console.log(err);
@@ -27,7 +26,6 @@ const Utlis = {
                 }
             });
         });
-
     },
     generateJWT: function (payload) {
         const token = jwt.sign(payload, config.JWT_KEY, {

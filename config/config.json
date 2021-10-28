@@ -4,6 +4,9 @@
     "END_POINTS": {
         "AUTH": {
             "ROUTE_BASE_URL": "/auth"
+        },
+        "PRODUCT": {
+            "ROUTE_BASE_URL": "/product"
         }
     },
     "LOCAL": {
@@ -16,9 +19,9 @@
     },
     "STAGING": {
         "SERVER_PORT": "3003",
-        "DB_HOST": "localhost",
-        "DB_USER": "root",
-        "DB_PASSWORD": "root123456",
+        "DB_HOST": "kinn-dev-db.cxy1occwws3x.us-east-2.rds.amazonaws.com",
+        "DB_USER": "kinn_admin",
+        "DB_PASSWORD": "8uDQPo4L5w97",
         "DB_SCHEMA": "ecommdb",
         "dialect": "mysql"
     }

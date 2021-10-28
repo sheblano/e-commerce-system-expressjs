@@ -1,8 +1,15 @@
-const db = require("../models");
+const { models } = require("../models");
 const Utlis = require('../helpers/utlis');
 const bcrypt = require('bcrypt');
 
 module.exports = {
+    /**
+     * just for encabsulating login logic to make route looks cleaner
+     * @param {request} req 
+     * @param {response} res 
+     * @param {User} user 
+     * @returns JSON response and status
+     */
     loginUser: async (req, res, user) => {
         bcrypt.compare(req.body.password, user.password, (err, response) => {
             if (err) {
@@ -29,23 +36,46 @@ module.exports = {
             }
         });
     },
-
+    /**
+     * for creating random and test users for making a working flow
+     * @returns Promise<User>
+     */
     createTestUser: async () => {
         const random = Math.floor(Date.now() / 1000); // timestamp in seconds
-        const hashPassword = await Utlis.hashPassword(random);
+        const salt = await bcrypt.genSalt();
+        const hashPassword = await Utlis.hashPassword(random, salt);
         const user = {
             username: `test-${random}`,
             password: hashPassword,
-            allowed_limit: 100
+            allowed_limit: 100,
+            salt: salt
         };
-        return db().models.User.create(user);
+        return models.User.create(user);
     },
 
+    /**
+     * for getting the user by username
+     * @param {string} username 
+     * @returns Promise<User>
+     */
     getUser: async (username) => {
-        return db().models.User.findOne({
+        return models.User.findOne({
             where: {
                 username
             }
         });
-    }
+    },
+
+    /**
+     * for getting user by id
+     * @param {number} id 
+     * @returns  Promise<User>
+     */
+    getUserById: async (id) => {
+        return models.User.findOne({
+            where: {
+                id
+            }
+        });
+    },
 }
