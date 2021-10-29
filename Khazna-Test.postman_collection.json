@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "9dd183ac-57bf-4063-a64c-cb14cb4fc48b",
+		"name": "Khazna-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authentication-header",
+						"value": "268cfa5f-2924-4f9c-979b-4158ca1f313e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test-1635381942\",\r\n    \"password\": \"1635381942\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/auth/login",
+					"protocol": "https",
+					"host": [
+						"dry-atoll-52485",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authentication-header",
+								"value": "268cfa5f-2924-4f9c-979b-4158ca1f313e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test-1635381942\",\r\n    \"password\": \"1635381942\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/auth/login",
+							"protocol": "https",
+							"host": [
+								"dry-atoll-52485",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "155"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"9b-tfgfs977+LfWyTqzT8nXJGiZQO8\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 Oct 2021 00:46:40 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTYzNTM4MjAwMCwiZXhwIjoxNjM1Mzg1NjAwfQ.nlXog4gSjltP3ylLW4iLmsudwNbsPazwEY-mEGfJ4rw\"\n}"
+				}
+			]
+		},
+		{
+			"name": "register test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/auth/register/test",
+					"protocol": "https",
+					"host": [
+						"dry-atoll-52485",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register",
+						"test"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "register-test",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/auth/register-test",
+							"protocol": "https",
+							"host": [
+								"dry-atoll-52485",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register-test"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "57"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"39-pPPnJ/2TWCCM1k1YG6sP8vlI0qk\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 Oct 2021 00:45:42 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 4,\n    \"username\": \"test-1635381942\",\n    \"allowed_limit\": 100\n}"
+				}
+			]
+		},
+		{
+			"name": "fetch products within limit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTYzNTM4MjAwMCwiZXhwIjoxNjM1Mzg1NjAwfQ.nlXog4gSjltP3ylLW4iLmsudwNbsPazwEY-mEGfJ4rw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/product/",
+					"protocol": "https",
+					"host": [
+						"dry-atoll-52485",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"product",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "fetch products within limit",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/product/",
+							"protocol": "https",
+							"host": [
+								"dry-atoll-52485",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "475"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"1db-faKRduKkpp9DGqG5CBUPL2Gc3vc\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 Oct 2021 00:47:21 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"product-1\",\n        \"brand\": \"nike\",\n        \"price\": 30,\n        \"createdAt\": null,\n        \"updatedAt\": null,\n        \"productCategoryId\": 1,\n        \"product-category\": {\n            \"id\": 1,\n            \"name\": \"Sports Wear\",\n            \"createdAt\": \"2021-10-27T10:30:12.000Z\",\n            \"updatedAt\": \"2021-10-27T10:30:12.000Z\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"name\": \"product-2\",\n        \"brand\": \"puma\",\n        \"price\": 20,\n        \"createdAt\": null,\n        \"updatedAt\": null,\n        \"productCategoryId\": 1,\n        \"product-category\": {\n            \"id\": 1,\n            \"name\": \"Sports Wear\",\n            \"createdAt\": \"2021-10-27T10:30:12.000Z\",\n            \"updatedAt\": \"2021-10-27T10:30:12.000Z\"\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "product request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTYzNTM4MjAwMCwiZXhwIjoxNjM1Mzg1NjAwfQ.nlXog4gSjltP3ylLW4iLmsudwNbsPazwEY-mEGfJ4rw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/product/1/request",
+					"protocol": "https",
+					"host": [
+						"dry-atoll-52485",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"1",
+						"request"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "product request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/product/1/request",
+							"protocol": "https",
+							"host": [
+								"dry-atoll-52485",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"1",
+								"request"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "130"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"82-6mdv/0/hAktiHqEdXK6jMrQiH88\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 Oct 2021 00:48:13 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"createdAt\": \"2021-10-28T00:48:12.976Z\",\n    \"updatedAt\": \"2021-10-28T00:48:12.976Z\",\n    \"id\": 1,\n    \"status\": \"CREATED\",\n    \"userId\": 4,\n    \"productId\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "product request cancel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTYzNTM4MjAwMCwiZXhwIjoxNjM1Mzg1NjAwfQ.nlXog4gSjltP3ylLW4iLmsudwNbsPazwEY-mEGfJ4rw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/product/1/request/1/cancel",
+					"protocol": "https",
+					"host": [
+						"dry-atoll-52485",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"1",
+						"request",
+						"1",
+						"cancel"
+					]
+				},
+				"description": "for enabling the user canceling his requests"
+			},
+			"response": [
+				{
+					"name": "product request cancel",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://dry-atoll-52485.herokuapp.com/api/v1/product/1/request/1/cancel",
+							"protocol": "https",
+							"host": [
+								"dry-atoll-52485",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"1",
+								"request",
+								"1",
+								"cancel"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 Oct 2021 00:49:02 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

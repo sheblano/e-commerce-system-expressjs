@@ -1,18 +1,16 @@
 const express = require('express');
-// require('dotenv').config();
+require('dotenv').config();
 const CONSTANTS = require('./config/config.json');
 const config = require('./config/init');
 const db = require("./models");
 const appEnvironment = require("./environment");
-// const swaggerJsDoc = require('swagger-jsdoc');
-// const swaggerUi = require('swagger-ui-express');
 
 // routes
 const authRoute = require('./routes/auth.route');
 const productRoute = require('./routes/product.route');
 
 // Application Environment
-let port = CONSTANTS[appEnvironment.environment].SERVER_PORT;
+let port = process.env.SERVER_PORT || CONSTANTS[appEnvironment.environment].SERVER_PORT;
 // initialize express app
 const app = express();
 
@@ -42,7 +40,6 @@ process.on('uncaughtException', function (err) {
     console.log("uncaughtException...");
     console.error(err.stack);
 });
-
 
 app.listen(port, () => {
     console.log('Server is up and running on port numner ' + port);
