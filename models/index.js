@@ -13,20 +13,20 @@ module.exports = (() => {
 
         User.hasMany(UserProductRequest);
         UserProductRequest.belongsTo(Product);
-        
+
     }
 
-    const config = dbConfig(appEnvironment.environment);
+    const config = process.env || dbConfig(appEnvironment.environment);
     const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD,
         {
             host: config.HOST,
             dialect: config.dialect,
             operatorsAliases: false,
             pool: {
-                max: config.pool.max,
-                min: config.pool.min,
-                acquire: config.pool.acquire,
-                idle: config.pool.idle
+                max: +config.POOL_MAX,
+                min: +config.POOL_MIN,
+                acquire: +config.POOL_ACQUIRE,
+                idle: +config.POOL_IDLE
             }
         });
 
