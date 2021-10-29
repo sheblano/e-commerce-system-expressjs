@@ -36,4 +36,6 @@ api public end-point (POST): https://dry-atoll-52485.herokuapp.com/api/v1/auth/l
 	and canceling the request **if request is not deleivered or canceled before** will refund the user with the deducted amount upon request
 
 ## Postman Collection
+added collection.json file with name Khazna-Test.postman_collection.json in root folder 
+and here is a live version of the collection below for easly forked in postman
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/264883-9dd183ac-57bf-4063-a64c-cb14cb4fc48b?action=collection%2Ffork&collection-url=entityId%3D264883-9dd183ac-57bf-4063-a64c-cb14cb4fc48b%26entityType%3Dcollection%26workspaceId%3D1cf49d09-22c4-45ac-8e99-393b0beea99d)
