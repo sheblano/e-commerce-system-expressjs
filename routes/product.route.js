@@ -30,7 +30,7 @@ router.post('/:productId/request', checkAuth, async (req, res) => {
     // start a transaction process    
     const transaction = await sequelize.transaction();
     const product = await productController.getProductWithId(req.params.productId);
-    const allowedLimit = await productController.getUserCurrentAllowedLimit(req.userData.user.id);
+    const allowedLimit = req.userData.user.allowed_limit;
 
     try {
         if (product && allowedLimit && product.price <= allowedLimit) {
@@ -83,7 +83,7 @@ router.patch('/:productId/request/:requestId/cancel', checkAuth, async (req, res
         // start a transaction process    
         const productRequest = await productController.getProductRequest(req.params.requestId);
         const product = await productRequest.getProduct();
-        const allowedLimit = await productController.getUserCurrentAllowedLimit(req.userData.user.id);
+        const allowedLimit = req.userData.user.allowed_limit;
 
         if (productRequest.status === ProductRequestStatus.CREATED) {
             const canceledRequest = await productController.cancelProductRequest(req.userData.user.id, req.params.requestId, transaction);
