@@ -10,7 +10,7 @@
 - request products
 - cancel requests if it is not delivered
 ****
-- **Framework Used (expressJS with MySql)**
+- **Framework Used (expressJS with MySql using sequelize)**
 
 - **Node App deployed on Heroku and DB on AWS personal RDS instance**
 
@@ -21,7 +21,7 @@
 
 	this random number is the password you can use to test
 	**ex**: test-1635381942 then **username** is test-1635381942 and **password** is 1635381942
-	 api public end-point (POST): https://dry-atoll-52485.herokuapp.com/api/v1/auth/register/test
+	 you can access api publicly via end-point (POST): https://dry-atoll-52485.herokuapp.com/api/v1/auth/register/test
 
 - then you can **login** using your username and password using login api
 api public end-point (POST): https://dry-atoll-52485.herokuapp.com/api/v1/auth/login
@@ -33,7 +33,7 @@ api public end-point (POST): https://dry-atoll-52485.herokuapp.com/api/v1/auth/l
 	the request will deduct from user allowed limit
 
 - and user can cancel the request using this API (PATCH):  https://dry-atoll-52485.herokuapp.com/api/v1/product/:productId/request/:requestId/cancel
-	and canceling the request **if request is not deleivered or canceled before** will refund the user with the deducted amount upon request
+	and canceling the request **if request is not deleivered or canceled before** will refund the user with the deducted amount upon request - I am also assuming that we have 3 statues CREATED|DELIVERED|CANCELED
 
 ## Postman Collection
 added collection.json file with name Khazna-Test.postman_collection.json in root folder 
