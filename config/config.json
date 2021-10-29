@@ -15,7 +15,7 @@
         "DB_USER": "admin",
         "DB_PASSWORD": "admin",
         "DB_SCHEMA": "ecommdb",
-        "dialect": "mysql"
+        "DIALECT": "mysql"
     },
     "STAGING": {
         "SERVER_PORT": "3003",
@@ -23,6 +23,6 @@
         "DB_USER": "kinn_admin",
         "DB_PASSWORD": "8uDQPo4L5w97",
         "DB_SCHEMA": "ecommdb",
-        "dialect": "mysql"
+        "DIALECT": "mysql"
     }
 }

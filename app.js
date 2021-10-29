@@ -1,5 +1,5 @@
 const express = require('express');
-require('dotenv').config();
+// require('dotenv').config();
 const CONSTANTS = require('./config/config.json');
 const config = require('./config/init');
 const db = require("./models");
@@ -12,7 +12,7 @@ const authRoute = require('./routes/auth.route');
 const productRoute = require('./routes/product.route');
 
 // Application Environment
-let port = process.env.SERVER_PORT || process.env.PORT || CONSTANTS[appEnvironment.environment].SERVER_PORT;
+let port = CONSTANTS[appEnvironment.environment].SERVER_PORT;
 // initialize express app
 const app = express();
 
@@ -43,7 +43,7 @@ process.on('uncaughtException', function (err) {
     console.error(err.stack);
 });
 
-const host = '0.0.0.0';
-app.listen(port, host, () => {
+
+app.listen(port, () => {
     console.log('Server is up and running on port numner ' + port);
 });

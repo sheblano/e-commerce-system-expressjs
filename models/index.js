@@ -16,11 +16,11 @@ module.exports = (() => {
 
     }
 
-    const config = process.env || dbConfig(appEnvironment.environment);
+    const config =  dbConfig(appEnvironment.environment);
     const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD,
         {
-            host: config.HOST,
-            dialect: config.dialect,
+            host: config.DB_HOST,
+            dialect: config.DIALECT,
             operatorsAliases: false,
             pool: {
                 max: +config.POOL_MAX,
