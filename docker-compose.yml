@@ -1,0 +1,37 @@
+version: '3.8'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services: 
+  mysqldb:
+    image: mysql
+    restart: always
+    env_file: ./.env
+    environment:
+      DB_HOSTNAME: DB_HOST
+      MYSQL_DATABASE: DB
+      MYSQL_USER: USER
+      MYSQL_PASSWORD: PASSWORD
+      MYSQL_ROOT_PASSWORD: PASSWORD
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3306:3306
+    networks:
+      - app-tier
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: khazna-ecommerce-express-mysql-app
+    env_file: ./.env
+    ports:
+      - 3003:3003
+    networks:
+      - app-tier
+    depends_on:
+      - mysqldb
+    stdin_open: true
+    tty: true
